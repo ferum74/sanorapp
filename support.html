@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanor – Support</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #8DCDFB;
+      --primary-dark: #5bb8f9;
+      --primary-light: #d6effe;
+      --text: #1a1a2e;
+      --text-muted: #5a6a7a;
+      --border: #e2edf6;
+      --bg: #f7fbff;
+      --white: #ffffff;
+      --radius: 14px;
+      --shadow: 0 2px 18px rgba(141,205,251,0.13);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ─────────────────────────────────── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 12px rgba(141,205,251,0.10);
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      height: 68px;
+    }
+    .header-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .header-logo-fallback {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .header-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+    .header-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+
+    /* ── HERO ───────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-light) 0%, #eaf6ff 100%);
+      padding: 60px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── NAV TABS ───────────────────────────────── */
+    .tab-nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      gap: 0;
+      justify-content: center;
+    }
+    .tab-nav a {
+      display: inline-block;
+      padding: 16px 28px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+    }
+    .tab-nav a:hover, .tab-nav a.active {
+      color: var(--primary-dark);
+      border-bottom-color: var(--primary);
+    }
+
+    /* ── MAIN CONTAINER ─────────────────────────── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── SECTIONS ───────────────────────────────── */
+    section {
+      padding-top: 60px;
+    }
+    .section-label {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    section h2 {
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.4px;
+      margin-bottom: 8px;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.97rem;
+      margin-bottom: 36px;
+    }
+
+    /* ── FAQ ────────────────────────────────────── */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .faq-item:hover { box-shadow: var(--shadow); }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: background 0.15s;
+    }
+    .faq-question:hover { background: #f7fbff; }
+    .faq-question .num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .faq-question .q-text { flex: 1; }
+    .faq-chevron {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.25s;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+    .faq-answer {
+      display: none;
+      padding: 0 24px 20px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-answer p { margin-bottom: 10px; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    .faq-answer ul { margin: 8px 0 8px 20px; }
+    .faq-answer ul li { margin-bottom: 4px; }
+
+    /* ── HOW TO USE ─────────────────────────────── */
+    .steps { display: flex; flex-direction: column; gap: 0; }
+
+    .step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      position: relative;
+    }
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 21px;
+      top: 52px;
+      width: 2px;
+      height: calc(100% - 20px);
+      background: linear-gradient(to bottom, var(--primary), transparent);
+    }
+    .step-number {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(141,205,251,0.4);
+      position: relative;
+      z-index: 1;
+    }
+    .step-content {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+    .step-content h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .step-content p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    /* ── CONTACT FORM ───────────────────────────── */
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 40px;
+      box-shadow: var(--shadow);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--bg);
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(141,205,251,0.25);
+    }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      letter-spacing: 0.2px;
+    }
+    .btn-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(141,205,251,0.45);
+    }
+    .btn-submit:active { transform: translateY(0); }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--primary-dark); }
+    .footer-copy {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; }
+      .contact-card { padding: 24px 20px; }
+      .tab-nav a { padding: 14px 16px; font-size: 0.82rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <img src="icon.jpeg" alt="Sanor" class="header-logo"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+    <div class="header-logo-fallback" style="display:none;">💊</div>
+    <span class="header-title">Sanor</span>
+    <span class="header-subtitle">Support Center</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>How can we help you?</h1>
+  <p>Find answers, learn how to use the app, or reach out to our support team.</p>
+</div>
+
+<!-- TAB NAV -->
+<nav class="tab-nav">
+  <a href="#faq" class="active">FAQ</a>
+  <a href="#how-to">How to Use</a>
+  <a href="#contact">Contact Us</a>
+</nav>
+
+<main>
+
+  <!-- ── FAQ ─────────────────────────────────────── -->
+  <section id="faq">
+    <div class="section-label">FAQ</div>
+    <h2>Frequently Asked Questions</h2>
+    <p class="section-desc">Everything you need to know about Sanor.</p>
+
+    <div class="faq-list">
+
+      <div class="faq-item open">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span class="num">1</span>
+          <span class="q-text">Is Sanor a medical app?</span>
+          <svg class="faq-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>No. Sanor is not a professional medical application and does not replace a doctor, pharmacist, or medical advice.</p>
+          <p>Sanor helps users organize medication schedules, track consistency, and receive reminders. Any medical diagnosis, prescription, or treatment decisions should always come from a licensed healthcare professional.</p>
+          <p>If Sanor detects a potential medication interaction or issue, we recommend contacting your doctor or pharmacist for professional guidance.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span class="num">2</span>
+          <span class="q-text">Are my personal data protected?</span>
+          <svg class="faq-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. Your privacy and security are extremely important to us.</p>
+          <p>Sanor uses encrypted local storage and secure protection methods to keep your data safe. We do not sell or share your personal health information with third parties.</p>
+          <p>Only you can decide if you want to export or share your medication history or health-related data.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span class="num">3</span>
+          <span class="q-text">Does Sanor replace medication instructions from my doctor?</span>
+          <svg class="faq-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>No. Always follow the instructions provided by your doctor or pharmacist.</p>
+          <p>Sanor is designed to support your daily medication routine by helping you remember schedules and stay consistent, but it should never replace professional medical recommendations.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span class="num">4</span>
+          <span class="q-text">Can Sanor detect dangerous medication interactions?</span>
+          <svg class="faq-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Sanor may highlight potential medication concerns or interactions in the future, but it cannot guarantee complete medical accuracy.</p>
+          <p>Medication safety depends on many personal factors such as medical history, allergies, dosage, and other treatments. Always consult a healthcare professional before making changes to your medication plan.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span class="num">5</span>
+          <span class="q-text">What happens if I change phones or reinstall the app?</span>
+          <svg class="faq-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Depending on your backup and synchronization settings, some data may remain stored locally on your device.</p>
+          <p>Future versions of Sanor may include secure cloud synchronization and account recovery options for easier device transfers.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span class="num">6</span>
+          <span class="q-text">Does Sanor work with Apple Health?</span>
+          <svg class="faq-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. With your permission, Sanor can connect to Apple Health to access selected wellness information such as:</p>
+          <ul>
+            <li>steps,</li>
+            <li>heart rate,</li>
+            <li>activity data.</li>
+          </ul>
+          <p>You control which permissions are granted and can disable access at any time in your device settings.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── HOW TO USE ─────────────────────────────── -->
+  <section id="how-to">
+    <div class="section-label">How to Use</div>
+    <h2>Getting Started with Sanor</h2>
+    <p class="section-desc">Follow these steps to set up and make the most of your medication companion.</p>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Download the App</h3>
+          <p>Find Sanor on the App Store, tap <strong>Get</strong>, and wait for the installation to complete. The app requires iOS 15 or later.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Create Your Profile</h3>
+          <p>Open the app and complete a quick setup: enter your name, age, and any relevant health notes. Your data is stored privately on your device.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Add Your Medications</h3>
+          <p>Tap <strong>"+ Add Medication"</strong>, enter the name, dosage, and frequency. You can add as many medications as needed.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Set Up Reminders</h3>
+          <p>Configure notification times for each medication. Sanor will send you a push notification when it's time to take your next dose.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>Track Your Daily Intake</h3>
+          <p>Each day, open the app and check off medications as you take them. The calendar view shows your consistency over time.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <h3>Review Your History & Insights</h3>
+          <p>Visit the <strong>History</strong> tab to see your adherence trends, streaks, and health notes — useful context to share with your doctor.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">7</div>
+        <div class="step-content">
+          <h3>Connect Apple Health (Optional)</h3>
+          <p>Go to <strong>Settings → Apple Health</strong> and grant permission to sync your step count, heart rate, and activity data alongside your medication log.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CONTACT ────────────────────────────────── -->
+  <section id="contact">
+    <div class="section-label">Contact Us</div>
+    <h2>Get in Touch</h2>
+    <p class="section-desc">Can't find your answer above? We're happy to help — usually within 24 hours.</p>
+
+    <div class="contact-card">
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="topic">Topic</label>
+          <select id="topic" name="topic">
+            <option value="">Select a topic…</option>
+            <option>General Question</option>
+            <option>Bug Report</option>
+            <option>Data & Privacy</option>
+            <option>Billing</option>
+            <option>Feature Request</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Describe your issue or question in detail…" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message →</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p class="footer-copy">© 2026 Sanor. All rights reserved. Not a medical device.</p>
+  </div>
+</footer>
+
+<script>
+  function toggleFAQ(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = '✓ Message sent!';
+    btn.style.background = 'linear-gradient(135deg, #4caf86, #3d9970)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3500);
+  }
+
+  // Smooth scroll + active tab highlight
+  document.querySelectorAll('.tab-nav a').forEach(link => {
+    link.addEventListener('click', e => {
+      document.querySelectorAll('.tab-nav a').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
