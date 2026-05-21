@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanor – Your Smart Medication Companion</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #8DCDFB;
+      --primary-dark: #5bb8f9;
+      --primary-deeper: #2e9de8;
+      --primary-light: #d6effe;
+      --primary-ultra: #eaf6ff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-light: #94a3b8;
+      --white: #ffffff;
+      --border: #e2edf6;
+      --radius: 16px;
+      --radius-lg: 24px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ─────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(141,205,251,0.2);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      object-fit: cover;
+    }
+    .nav-icon-fallback {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .nav-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--primary-deeper); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white !important;
+      padding: 9px 20px;
+      border-radius: 30px;
+      font-weight: 700 !important;
+      font-size: 0.88rem !important;
+      transition: transform 0.15s, box-shadow 0.2s !important;
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(141,205,251,0.5);
+      color: white !important;
+    }
+
+    /* ── HERO ───────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(160deg, #f0f9ff 0%, var(--white) 50%, #f0f9ff 100%);
+      padding: 100px 32px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(141,205,251,0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(141,205,251,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--primary-light);
+      color: var(--primary-deeper);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 6px 14px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary-deeper));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.12rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 460px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 15px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 8px 28px rgba(141,205,251,0.45);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(141,205,251,0.55);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 15px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      border: 2px solid var(--border);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      background: var(--primary-ultra);
+    }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 44px;
+    }
+    .stat-item { }
+    .stat-value {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Hero phone mockup */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .phone-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .phone-glow {
+      position: absolute;
+      inset: -40px;
+      background: radial-gradient(ellipse, rgba(141,205,251,0.35) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .phone-frame {
+      width: 260px;
+      background: var(--text);
+      border-radius: 42px;
+      padding: 12px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,255,255,0.1);
+      position: relative;
+      z-index: 1;
+    }
+    .phone-screen {
+      border-radius: 32px;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--primary-light), #e0f4ff, var(--primary-ultra));
+      aspect-ratio: 9/19.5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 24px;
+    }
+    .phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 28px;
+    }
+    .phone-screen-placeholder {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      box-shadow: 0 8px 24px rgba(141,205,251,0.4);
+    }
+    .phone-screen-text {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text);
+      text-align: center;
+    }
+    .phone-screen-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .pill-chip {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 10px 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      width: 100%;
+    }
+    .pill-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── SCREENSHOTS ────────────────────────────── */
+    .screenshots {
+      padding: 100px 32px;
+      background: linear-gradient(180deg, var(--white) 0%, var(--primary-ultra) 100%);
+    }
+    .section-center {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 56px;
+    }
+    .tag {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary-deeper);
+      font-size: 0.73rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .section-center h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: -0.8px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .section-center p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .screenshots-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      align-items: end;
+    }
+    .screenshot-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .screenshot-item:nth-child(2) .screenshot-frame { transform: translateY(-20px); }
+    .screenshot-frame {
+      background: var(--text);
+      border-radius: 38px;
+      padding: 10px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+      transition: transform 0.3s;
+    }
+    .screenshot-frame:hover { transform: translateY(-8px) !important; }
+    .screenshot-screen {
+      border-radius: 30px;
+      overflow: hidden;
+      aspect-ratio: 9/19;
+      background: linear-gradient(160deg, var(--primary-light), #ddf0ff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .screenshot-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .screenshot-placeholder-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 20px;
+      width: 100%;
+      height: 100%;
+    }
+    .screenshot-icon {
+      font-size: 36px;
+    }
+    .screenshot-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .screenshot-caption {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: center;
+    }
+
+    /* ── FEATURES ───────────────────────────────── */
+    .features {
+      padding: 100px 32px;
+      background: var(--white);
+    }
+    .features-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .feature-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 30px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(141,205,251,0.2);
+      border-color: var(--primary);
+    }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-icon-wrap {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      transition: background 0.25s;
+    }
+    .feature-card:hover .feature-icon-wrap {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    }
+    .feature-icon-img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+    .feature-icon-fallback {
+      font-size: 28px;
+    }
+    .feature-card h3 {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      line-height: 1.7;
+    }
+
+    /* ── TESTIMONIALS ───────────────────────────── */
+    .testimonials {
+      padding: 100px 32px;
+      background: linear-gradient(180deg, var(--primary-ultra) 0%, var(--white) 100%);
+    }
+    .testimonials-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 30px 28px;
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(141,205,251,0.15);
+    }
+    .quote-mark {
+      font-size: 3.5rem;
+      line-height: 1;
+      color: var(--primary);
+      font-family: Georgia, serif;
+      margin-bottom: 6px;
+    }
+    .testimonial-text {
+      font-size: 0.97rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 22px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: white;
+      flex-shrink: 0;
+    }
+    .author-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .author-meta {
+      font-size: 0.78rem;
+      color: var(--text-light);
+    }
+    .stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 14px;
+    }
+    .star { color: #f59e0b; font-size: 15px; }
+
+    /* ── DOWNLOAD ───────────────────────────────── */
+    .download {
+      padding: 100px 32px;
+      background: linear-gradient(135deg, var(--text) 0%, #1e293b 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .download::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(141,205,251,0.15) 0%, transparent 70%);
+    }
+    .download-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .download .tag {
+      background: rgba(141,205,251,0.2);
+      color: var(--primary);
+    }
+    .download h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.8px;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .download p {
+      color: #94a3b8;
+      font-size: 1.05rem;
+      margin-bottom: 44px;
+      line-height: 1.7;
+    }
+    .store-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 14px 24px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+      min-width: 180px;
+    }
+    .store-btn:hover {
+      background: rgba(141,205,251,0.15);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .store-btn-icon { font-size: 28px; flex-shrink: 0; }
+    .store-btn-text { text-align: left; }
+    .store-btn-label {
+      display: block;
+      font-size: 0.68rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .store-btn-name {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.2px;
+    }
+    .download-note {
+      margin-top: 24px;
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    footer {
+      background: #0a0f1a;
+      padding: 48px 32px 32px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 12px;
+    }
+    .footer-brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .footer-brand-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: white;
+    }
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: #64748b;
+      max-width: 240px;
+    }
+    .footer-col h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #94a3b8;
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.88rem;
+      color: #64748b;
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--primary); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: #475569;
+    }
+    .footer-disclaimer {
+      font-size: 0.75rem;
+      color: #334155;
+      text-align: right;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-sub { max-width: 100%; }
+      .hero-actions { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-visual { display: none; }
+      .screenshots-grid,
+      .features-grid,
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .screenshot-item:nth-child(2) .screenshot-frame { transform: none; }
+      .footer-top { flex-direction: column; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-disclaimer { text-align: center; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero { padding: 90px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <img src="icon.jpeg" alt="Sanor" class="nav-icon"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+      <div class="nav-icon-fallback" style="display:none;">💊</div>
+      <span class="nav-name">Sanor</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#screenshots">Screenshots</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="#download" class="nav-cta">Download Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO ───────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>✦</span> Available on iOS
+      </div>
+      <h1>
+        Never miss<br/>a dose<br/>
+        <span class="highlight">ever again.</span>
+      </h1>
+      <p class="hero-sub">
+        Sanor is your intelligent medication companion — track your pills, set smart reminders, and monitor your wellbeing all in one place.
+      </p>
+      <div class="hero-actions">
+        <a href="#download" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Download on App Store
+        </a>
+        <a href="#screenshots" class="btn-secondary">
+          See how it works →
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-value">98%</div>
+          <div class="stat-label">Adherence rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">4.9★</div>
+          <div class="stat-label">App Store rating</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">Free</div>
+          <div class="stat-label">To get started</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="phone-wrap">
+        <div class="phone-glow"></div>
+        <img src="vydra bez fona.png" alt="Sanor App" style="width:480px; position:relative; z-index:1; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.18));" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SCREENSHOTS ──────────────────────────────── -->
+<section class="screenshots" id="screenshots">
+  <div class="section-center">
+    <div class="tag">App Preview</div>
+    <h2>Everything you need,<br/>beautifully designed.</h2>
+    <p>Intuitive screens built for real life — from morning reminders to weekly health insights.</p>
+  </div>
+
+  <div class="screenshots-grid">
+
+    <div class="screenshot-item">
+      <div class="screenshot-frame">
+        <div class="screenshot-screen">
+          <img src="placeholders1.png" alt="Medication Schedule"
+               onerror="this.style.display='none'; this.parentElement.classList.add('show-placeholder');" />
+          <div class="screenshot-placeholder-inner">
+            <div class="screenshot-icon">📋</div>
+            <div class="screenshot-label">Daily Schedule</div>
+          </div>
+        </div>
+      </div>
+      <div class="screenshot-caption">Daily Schedule</div>
+    </div>
+
+    <div class="screenshot-item">
+      <div class="screenshot-frame">
+        <div class="screenshot-screen">
+          <img src="placeholders2.png" alt="Health Tracking"
+               onerror="this.style.display='none'; this.parentElement.classList.add('show-placeholder');" />
+          <div class="screenshot-placeholder-inner">
+            <div class="screenshot-icon">📊</div>
+            <div class="screenshot-label">Health Insights</div>
+          </div>
+        </div>
+      </div>
+      <div class="screenshot-caption">Health Insights</div>
+    </div>
+
+    <div class="screenshot-item">
+      <div class="screenshot-frame">
+        <div class="screenshot-screen">
+          <img src="placeholders3.png" alt="Smart Reminders"
+               onerror="this.style.display='none'; this.parentElement.classList.add('show-placeholder');" />
+          <div class="screenshot-placeholder-inner">
+            <div class="screenshot-icon">🔔</div>
+            <div class="screenshot-label">Smart Reminders</div>
+          </div>
+        </div>
+      </div>
+      <div class="screenshot-caption">Smart Reminders</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FEATURES ─────────────────────────────────── -->
+<section class="features" id="features">
+  <div class="section-center">
+    <div class="tag">Key Features</div>
+    <h2>Built for people who<br/>take health seriously.</h2>
+    <p>Smart tools designed to fit seamlessly into your daily routine — no complexity, just results.</p>
+  </div>
+
+  <div class="features-grid">
+
+    <div class="feature-card">
+      <div class="feature-icon-wrap">
+        <img src="icon.jpeg" alt="" class="feature-icon-img"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span class="feature-icon-fallback" style="display:none;">⏰</span>
+      </div>
+      <h3>Smart Reminders</h3>
+      <p>Personalized push notifications timed to your exact schedule. Never forget a dose — even with the most complex regimens.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon-wrap">
+        <img src="icon.jpeg" alt="" class="feature-icon-img"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span class="feature-icon-fallback" style="display:none;">📈</span>
+      </div>
+      <h3>Health Tracking</h3>
+      <p>Monitor your adherence over time with beautiful charts. Share insights with your doctor to make better treatment decisions.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon-wrap">
+        <img src="icon.jpeg" alt="" class="feature-icon-img"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span class="feature-icon-fallback" style="display:none;">🔒</span>
+      </div>
+      <h3>Privacy First</h3>
+      <p>Your health data is encrypted and stored locally on your device. We never sell or share your personal information — ever.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ──────────────────────────────── -->
+<section class="testimonials" id="reviews">
+  <div class="section-center">
+    <div class="tag">User Reviews</div>
+    <h2>Loved by users<br/>across Europe.</h2>
+    <p>Thousands of people already trust Sanor to stay on top of their health every day.</p>
+  </div>
+
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card">
+      <div class="stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">
+        Sanor hat mein Leben wirklich verändert. Ich nehme täglich mehrere Medikamente und vergesse nie mehr eine Einnahme. Die App ist so einfach und trotzdem unglaublich durchdacht.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: linear-gradient(135deg, #8DCDFB, #5bb8f9);">HM</div>
+        <div>
+          <div class="author-name">Hans Müller</div>
+          <div class="author-meta">Munich, Germany · App Store</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">
+        Konečně aplikace, která mi pomáhá nezapomenout na léky. Připomínky fungují skvěle a přehled užívání za týden je přesně to, co jsem potřebovala sdílet se svým lékařem.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: linear-gradient(135deg, #2e9de8, #1a7fc0);">LN</div>
+        <div>
+          <div class="author-name">Lucie Novotná</div>
+          <div class="author-meta">Prague, Czech Republic · App Store</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">
+        As someone managing a chronic condition, staying consistent with meds is everything. Sanor made it effortless. The design is clean, the reminders are smart, and my streak is now 47 days!
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: linear-gradient(135deg, #6ba3d6, #4a86c8);">SW</div>
+        <div>
+          <div class="author-name">Sophie Williams</div>
+          <div class="author-meta">London, United Kingdom · App Store</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── DOWNLOAD ──────────────────────────────────── -->
+<section class="download" id="download">
+  <div class="download-inner">
+    <div class="tag">Download Now</div>
+    <h2>Start your healthier<br/>routine today.</h2>
+    <p>Free to download. No subscription required to get started. Join thousands of users who never miss a dose.</p>
+
+    <div class="store-buttons">
+      <a href="#" class="store-btn">
+        <div class="store-btn-icon">🍎</div>
+        <div class="store-btn-text">
+          <span class="store-btn-label">Download on the</span>
+          <span class="store-btn-name">App Store</span>
+        </div>
+      </a>
+      <a href="#" class="store-btn" style="opacity:0.5; cursor: default;" title="Coming soon">
+        <div class="store-btn-icon">▶</div>
+        <div class="store-btn-text">
+          <span class="store-btn-label">Coming soon to</span>
+          <span class="store-btn-name">Google Play</span>
+        </div>
+      </a>
+    </div>
+
+    <p class="download-note">Requires iOS 15 or later · Free · No account needed to start</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="#" class="footer-brand">
+          <div class="footer-brand-icon">💊</div>
+          <span class="footer-brand-name">Sanor</span>
+        </a>
+        <p class="footer-tagline">Your smart medication companion for a healthier, more consistent life.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#download">Download</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="support.html#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="support.html">Help Center</a>
+        <a href="support.html#contact">Contact Us</a>
+        <a href="support.html#how-to">How to Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Sanor. All rights reserved.</p>
+      <p class="footer-disclaimer">Not a medical device. Does not replace professional medical advice.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Smooth active state for nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--primary-deeper)' : '';
+    });
+  });
+
+  // Handle broken screenshot images — show placeholder content
+  document.querySelectorAll('.screenshot-screen').forEach(screen => {
+    const img = screen.querySelector('img');
+    const placeholder = screen.querySelector('.screenshot-placeholder-inner');
+    if (img && placeholder) {
+      img.addEventListener('error', () => {
+        img.style.display = 'none';
+        placeholder.style.display = 'flex';
+      });
+      img.addEventListener('load', () => {
+        placeholder.style.display = 'none';
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
