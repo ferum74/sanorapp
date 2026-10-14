@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use – Sanor</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #8DCDFB;
+      --primary-dark: #5bb8f9;
+      --primary-light: #d6effe;
+      --text: #1a1a2e;
+      --text-muted: #5a6a7a;
+      --border: #e2edf6;
+      --bg: #f7fbff;
+      --white: #ffffff;
+      --radius: 14px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .header-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      height: 64px;
+    }
+    .header-logo {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      object-fit: cover;
+    }
+    .header-logo-fallback {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .header-title { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    .header-back {
+      margin-left: auto;
+      font-size: 0.85rem;
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .header-back:hover { text-decoration: underline; }
+
+    .hero {
+      background: linear-gradient(135deg, var(--primary-light), #eaf6ff);
+      padding: 52px 24px 44px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .hero-meta {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .intro-card {
+      background: var(--white);
+      border: 1.5px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      margin-bottom: 40px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .intro-card strong { color: var(--text); }
+
+    section {
+      margin-bottom: 40px;
+    }
+    section h2 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--primary-light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    section h2 .icon {
+      width: 30px; height: 30px;
+      border-radius: 8px;
+      background: var(--primary-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    section p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+    section p:last-child { margin-bottom: 0; }
+    section ul {
+      margin: 10px 0 12px 20px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    section ul li { margin-bottom: 7px; }
+
+    .highlight-box {
+      background: var(--primary-light);
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 0.92rem;
+      color: var(--text);
+      margin: 14px 0;
+    }
+
+    .contact-block {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-top: 14px;
+    }
+    .contact-block a {
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-block a:hover { text-decoration: underline; }
+
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .footer-inner { max-width: 780px; margin: 0 auto; }
+    .footer-links {
+      display: flex; justify-content: center; gap: 24px;
+      margin-bottom: 12px; flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: var(--text-muted); font-size: 0.85rem;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--primary-dark); }
+    .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+  </style>
+<link rel="icon" href="icon.jpeg">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <img src="icon.jpeg" alt="Sanor" class="header-logo"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+    <div class="header-logo-fallback" style="display:none;">💊</div>
+    <span class="header-title">Sanor</span>
+    <a href="index.html" class="header-back">← Back to Home</a>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>Terms of Use</h1>
+  <p class="hero-meta">Last updated: October 12, 2026 &nbsp;·&nbsp; Effective: October 12, 2026</p>
+</div>
+
+<main>
+<div class="intro-card">
+    <strong>The short version.</strong> Sanor helps you remember and keep track of your medications. It is a reminder and tracking tool, <strong>not a medical service</strong>: it does not diagnose, treat or give medical advice. Always follow your doctor's and pharmacist's instructions. Below are the full terms for using the app.
+  </div>
+
+  <section>
+    <h2><span class="icon">📄</span> 1. Who we are and what you agree to</h2>
+    <p>Sanor (the "App") is provided by Platon Fedotov, a natural person, residing at <strong>Volutova 2522/16, 158 00 Praha, Czech Republic</strong> ("Sanor", "we", "us").</p>
+    <p>By downloading, installing or using the App, or by creating an account, you agree to these Terms of Use and to our <a href="privacy.html">Privacy Policy</a>. If you do not agree, please do not use the App.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">⚕️</span> 2. Sanor is not medical advice</h2>
+    <div class="highlight-box">
+      Sanor does not provide medical advice, diagnosis or treatment, and it is not a medical device. Information in the App is for general information and personal organisation only.
+    </div>
+    <ul>
+      <li>Never start, stop or change a medication, or change a dose, because of something you saw in the App. Talk to your doctor or pharmacist first.</li>
+      <li>Never ignore or delay professional medical advice because of the App.</li>
+      <li>In an emergency call your local emergency number (112 in the EU) or go to the nearest emergency service. Do not rely on the App.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="icon">🧪</span> 3. Medication information and interaction checks</h2>
+    <p>The App contains a built-in database of active substances, common brand names and known interactions between them. It is a convenience feature with real limits:</p>
+    <ul>
+      <li>The database is <strong>not complete</strong> and may contain mistakes or be out of date. Not finding a warning does <strong>not</strong> mean that two medications are safe to take together.</li>
+      <li>A brand name is matched to the active substance of its most common version. Products with the same name can differ between countries and over time, and some contain several substances. <strong>Always check the active substance on your package and leaflet.</strong></li>
+      <li>Interactions depend on your health, doses, age and other things the App does not know about. Ask your pharmacist or doctor about your own situation.</li>
+      <li>Supplements, herbal products, food and alcohol can also interact with medication, and the App covers them only partly.</li>
+      <li>Czech medicine names in the database come from the open data of the State Institute for Drug Control (SÚKL, opendata.sukl.cz).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="icon">🔔</span> 4. Reminders and notifications</h2>
+    <p>Reminders are sent by your device. They may be late, silent or not delivered, for example when notifications are off, Focus or Do Not Disturb is on, the battery is low, or the system limits the App. <strong>Do not rely on the App as your only way to remember critical medication.</strong> You are responsible for taking your medication as prescribed.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">👤</span> 5. Eligibility and your account</h2>
+    <ul>
+      <li>You must be at least 16 years old to use the App on your own. If you are younger, you may use it only with the permission and supervision of a parent or guardian.</li>
+      <li>You can sign in with Apple or with an email address and password. Give accurate information and keep your sign-in details safe. You are responsible for activity under your account.</li>
+      <li>You can delete your account and its data at any time in the App under Settings → Delete account.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="icon">⭐</span> 6. Price</h2>
+    <p>Sanor is currently free to download and use. If we ever add paid features or a subscription, the price, billing period and what is included will be shown before you buy, payment will go through the Apple App Store, and these Terms will be updated first. Features you already use will not be taken away without notice.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">🚫</span> 7. Acceptable use</h2>
+    <p>You agree not to: use the App unlawfully; try to break, reverse engineer, scrape or overload the App or its services; access other people's accounts or data; upload harmful or unlawful content; or use the App to give medical advice to others. You may track medication of a family member or someone you care for only if you are entitled to do so.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">🔒</span> 8. Your data</h2>
+    <p>You own the data you enter. You give us permission to store and process it only to provide the App to you, as described in the <a href="privacy.html">Privacy Policy</a>. Your health-related data is sensitive; we handle it with your consent and protect it with reasonable technical and organisational measures. If you export a PDF report or calendar events, you are responsible for who you share them with.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">©️</span> 9. Intellectual property</h2>
+    <p>The App, its design, characters (including the Sanor otter), text, database and code belong to us or our licensors and are protected by law. We give you a personal, non-exclusive, non-transferable, revocable licence to use the App on Apple devices you own or control, for your own non-commercial use, according to these Terms and the Apple Media Services Terms and Usage Rules.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">🔗</span> 10. Third-party services</h2>
+    <p>The App uses services of others, for example Apple (App Store, Sign in with Apple, Apple Health, notifications, iPhone Calendar) and Google Firebase (sign-in and your online profile). Their own terms apply to those services, and we are not responsible for them.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">🛠️</span> 11. Availability and changes to the App</h2>
+    <p>We try to keep the App running but cannot promise it will be uninterrupted or error-free. We may update, change or discontinue features. If we discontinue a paid feature during a period you have paid for, we will offer a fair remedy as required by law.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">📉</span> 12. Disclaimers and limits of liability</h2>
+    <p>The App is provided "as is" and "as available" to the extent the law allows. We do not guarantee that the information in it is complete, accurate or suitable for your situation, or that reminders will always work.</p>
+    <p>To the extent permitted by law, we are not liable for indirect or consequential loss, or for harm caused by relying on the App instead of professional advice, by missed or late reminders, or by errors in the information. <strong>Nothing in these Terms limits liability that cannot be limited by law</strong>, including liability for death or personal injury caused by negligence, for intentional or grossly negligent acts, or for defects covered by mandatory consumer law. If you are a consumer, you keep all rights that the mandatory law of your country gives you.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">⏹️</span> 13. Ending your use</h2>
+    <p>You can stop using the App and delete your account at any time. We may suspend or end your access if you seriously or repeatedly break these Terms or if the law requires, and we will tell you why where possible. Sections that by their nature should continue to apply (for example intellectual property and liability) continue after use ends.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">🔄</span> 14. Changes to these Terms</h2>
+    <p>We may update these Terms, for example when we add features or when the law changes. For significant changes we will tell you in the App or in the App Store update notes before they apply, and you can stop using the App if you disagree. The "Last updated" date above shows the latest version.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">⚖️</span> 15. Governing law and disputes</h2>
+    <p>These Terms are governed by the laws of the Czech Republic. If you are a consumer in the EU, you also keep the protection of the mandatory consumer rules of the country where you live, and you may bring a claim in the courts of that country.</p>
+    <p>Please contact us first and we will try to solve the problem. Consumers in the Czech Republic can also turn to the Czech Trade Inspection Authority (Česká obchodní inspekce, <a href="https://www.coi.cz">www.coi.cz</a>) for out-of-court dispute resolution.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">🍎</span> 16. Terms required by Apple</h2>
+    <ul>
+      <li>These Terms are between you and Sanor only, not Apple. Sanor, not Apple, is responsible for the App and its content.</li>
+      <li>Apple has no obligation to provide maintenance or support for the App.</li>
+      <li>If the App fails to meet any applicable warranty, you may tell Apple and Apple will refund the purchase price of the App (if any). To the extent allowed by law, Apple has no other warranty obligation for the App. Other claims, losses and costs from a failure to conform to a warranty are our responsibility.</li>
+      <li>Sanor, not Apple, is responsible for addressing any claims about the App or your possession or use of it, including product liability, legal or regulatory compliance and consumer protection claims.</li>
+      <li>If a third party claims that the App infringes its intellectual property rights, Sanor, not Apple, is responsible for the investigation, defence and settlement.</li>
+      <li>You confirm that you are not located in a country under a US government embargo or designated as a "terrorist supporting" country, and that you are not on any US government list of prohibited or restricted parties.</li>
+      <li>You must follow applicable third-party terms (for example your mobile data agreement) when using the App.</li>
+      <li>Apple and its subsidiaries are third-party beneficiaries of these Terms. When you accept them, Apple has the right to enforce them against you as a third-party beneficiary.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="icon">✉️</span> 17. Contact</h2>
+    <div class="contact-block">
+      <p><strong>Sanor Support</strong></p>
+      <p>Platon Fedotov, IČO <strong>Volutova 2522/16, 158 00 Praha, Czech Republic</strong></p>
+      <p>Email: <a href="mailto:sanor.help@gmail.com">sanor.help@gmail.com</a></p>
+      <p>Website: <a href="https://www.sanorapp.com/support.html">www.sanorapp.com/support.html</a></p>
+    </div>
+  </section>
+
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </div>
+    <p class="footer-copy">© 2026 Platon Fedotov. Sanor is a trade name of the app.</p>
+  </div>
+</footer>
+
+</body>
+</html>

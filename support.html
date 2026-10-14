@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" href="icon.jpeg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sanor – Support</title>
   <style>
@@ -424,7 +425,7 @@
         </button>
         <div class="faq-answer">
           <p>Yes. Your privacy and security are extremely important to us.</p>
-          <p>Sanor uses encrypted local storage and secure protection methods to keep your data safe. We do not sell or share your personal health information with third parties.</p>
+          <p>Your medications, doses, symptoms, mood notes and cycle entries are stored on your iPhone and are not uploaded to us. Your account (email or Sign in with Apple) and a small profile (name, gender, height, weight, avatar) are stored with Google Firebase, so you can sign back in on a new phone. We do not sell your data, show ads or track you. Details are in the Privacy Policy.</p>
           <p>Only you can decide if you want to export or share your medication history or health-related data.</p>
         </div>
       </div>
@@ -448,7 +449,7 @@
           <svg class="faq-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="faq-answer">
-          <p>Sanor may highlight potential medication concerns or interactions in the future, but it cannot guarantee complete medical accuracy.</p>
+          <p>Sanor shows possible interactions between the medications you add, using a built-in database. The database is not complete and cannot guarantee medical accuracy, so not seeing a warning does not mean a combination is safe.</p>
           <p>Medication safety depends on many personal factors such as medical history, allergies, dosage, and other treatments. Always consult a healthcare professional before making changes to your medication plan.</p>
         </div>
       </div>
@@ -460,8 +461,8 @@
           <svg class="faq-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="faq-answer">
-          <p>Depending on your backup and synchronization settings, some data may remain stored locally on your device.</p>
-          <p>Future versions of Sanor may include secure cloud synchronization and account recovery options for easier device transfers.</p>
+          <p>When you sign in again, your account and profile come back. Your medication list and history are stored only on your iPhone, so they return only if you restore your new phone from an iCloud or computer backup of the old one.</p>
+          <p>Before switching phones, make sure your iPhone backup is up to date.</p>
         </div>
       </div>
 
@@ -497,7 +498,7 @@
         <div class="step-number">1</div>
         <div class="step-content">
           <h3>Download the App</h3>
-          <p>Find Sanor on the App Store, tap <strong>Get</strong>, and wait for the installation to complete. The app requires iOS 15 or later.</p>
+          <p>Find Sanor on the App Store, tap <strong>Get</strong>, and wait for the installation to complete. The app requires iOS 17 or later.</p>
         </div>
       </div>
 
@@ -505,7 +506,7 @@
         <div class="step-number">2</div>
         <div class="step-content">
           <h3>Create Your Profile</h3>
-          <p>Open the app and complete a quick setup: enter your name, age, and any relevant health notes. Your data is stored privately on your device.</p>
+          <p>Open the app and complete a quick setup: enter your name, age, and any relevant health notes. Your medication data stays on your iPhone.</p>
         </div>
       </div>
 
@@ -556,38 +557,12 @@
   <section id="contact">
     <div class="section-label">Contact Us</div>
     <h2>Get in Touch</h2>
-    <p class="section-desc">Can't find your answer above? We're happy to help — usually within 24 hours.</p>
+    <p class="section-desc">Can't find your answer above? We're happy to help.</p>
 
     <div class="contact-card">
-      <form onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" placeholder="Jane Smith" required />
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="jane@example.com" required />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="topic">Topic</label>
-          <select id="topic" name="topic">
-            <option value="">Select a topic…</option>
-            <option>General Question</option>
-            <option>Bug Report</option>
-            <option>Data & Privacy</option>
-            <option>Billing</option>
-            <option>Feature Request</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Describe your issue or question in detail…" required></textarea>
-        </div>
-        <button type="submit" class="btn-submit">Send Message →</button>
-      </form>
+      <p style="font-size:1.05rem;margin-bottom:12px;">Write to us at <a href="mailto:sanor.help@gmail.com"><strong>sanor.help@gmail.com</strong></a>. Please do not include medical details you do not want to share. We read every message and reply as soon as we can.</p>
+      <p style="color:var(--text-muted);font-size:.9rem;">For a data request (access, correction, deletion) write "Data request" in the subject. You can also delete your account yourself in the app under Settings.</p>
+    
     </div>
   </section>
 
@@ -602,7 +577,7 @@
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </div>
-    <p class="footer-copy">© 2026 Sanor. All rights reserved. Not a medical device.</p>
+    <p class="footer-copy">© 2026 Platon Fedotov. Not a medical device.</p>
   </div>
 </footer>
 
