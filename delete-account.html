@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete your account – Sanor</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #8DCDFB;
+      --primary-dark: #5bb8f9;
+      --primary-light: #d6effe;
+      --text: #1a1a2e;
+      --text-muted: #5a6a7a;
+      --border: #e2edf6;
+      --bg: #f7fbff;
+      --white: #ffffff;
+      --radius: 14px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .header-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      height: 64px;
+    }
+    .header-logo {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      object-fit: cover;
+    }
+    .header-logo-fallback {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .header-title { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    .header-back {
+      margin-left: auto;
+      font-size: 0.85rem;
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .header-back:hover { text-decoration: underline; }
+
+    .hero {
+      background: linear-gradient(135deg, var(--primary-light), #eaf6ff);
+      padding: 52px 24px 44px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .hero-meta {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .intro-card {
+      background: var(--white);
+      border: 1.5px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      margin-bottom: 40px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .intro-card strong { color: var(--text); }
+
+    section {
+      margin-bottom: 40px;
+    }
+    section h2 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--primary-light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    section h2 .icon {
+      width: 30px; height: 30px;
+      border-radius: 8px;
+      background: var(--primary-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    section p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+    section p:last-child { margin-bottom: 0; }
+    section ul {
+      margin: 10px 0 12px 20px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    section ul li { margin-bottom: 7px; }
+
+    .highlight-box {
+      background: var(--primary-light);
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 0.92rem;
+      color: var(--text);
+      margin: 14px 0;
+    }
+
+    .contact-block {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-top: 14px;
+    }
+    .contact-block a {
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-block a:hover { text-decoration: underline; }
+
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .footer-inner { max-width: 780px; margin: 0 auto; }
+    .footer-links {
+      display: flex; justify-content: center; gap: 24px;
+      margin-bottom: 12px; flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: var(--text-muted); font-size: 0.85rem;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--primary-dark); }
+    .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+  </style>
+<link rel="icon" href="icon.jpeg">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <img src="icon.jpeg" alt="Sanor" class="header-logo"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+    <div class="header-logo-fallback" style="display:none;">💊</div>
+    <span class="header-title">Sanor</span>
+    <a href="index.html" class="header-back">← Back to Home</a>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>Delete your account</h1>
+  <p class="hero-meta">Last updated: October 30, 2026 &nbsp;·&nbsp; Effective: October 30, 2026</p>
+</div>
+
+<main>
+
+  <section>
+    <h2><span class="icon">🗑️</span> Delete your Sanor account</h2>
+    <p>You can delete your account and all data we hold about you at any time, on iPhone and on Android.</p>
+    <h3>In the app (fastest)</h3>
+    <ol>
+      <li>Open Sanor and go to <strong>More → Settings → Delete Account</strong>.</li>
+      <li>Confirm (you may be asked to enter your password, or to sign in again).</li>
+    </ol>
+    <p>This permanently deletes your profile from our database and your sign-in, and clears the app data on your device.</p>
+    <h3>Without the app</h3>
+    <p>If you can no longer open the app, email <a href="mailto:sanor.help@gmail.com">sanor.help@gmail.com</a> from the address you used to sign up and write "Delete my Sanor account". We will delete your account and profile within 30 days and confirm by email.</p>
+    <h3>What is deleted, and what is not</h3>
+    <ul>
+      <li>Deleted: your account (sign-in), your name, gender, height, weight, avatar and the records of your consents and settings stored online.</li>
+      <li>Your medications, doses, symptoms, mood and cycle entries are stored only on your phone and are removed when you delete the account in the app or uninstall Sanor.</li>
+      <li>Copies in Google's systems are removed within the periods stated in Google's documentation (generally within about 180 days).</li>
+    </ul>
+    <p>See also the <a href="privacy.html">Privacy Policy</a>.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </div>
+    <p class="footer-copy">© 2026 Platon Fedotov. Sanor is a trade name of the app.</p>
+  </div>
+</footer>
+
+</body>
+</html>

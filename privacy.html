@@ -194,7 +194,7 @@
 <main>
 
   <div class="intro-card">
-    <strong>The short version.</strong> Your medications, doses, symptoms, mood notes and cycle entries stay on your iPhone.
+    <strong>The short version.</strong> Your medications, doses, symptoms, mood notes and cycle entries stay on your phone (iPhone or Android).
     Only your account and a small profile are stored online, so you can sign back in on a new phone. We do not show ads,
     do not track you, do not use analytics or crash-reporting tools, and never sell data.
   </div>
@@ -209,12 +209,12 @@
     <h2><span class="icon">🗂️</span> 2. What data we process and where it lives</h2>
     <p><strong>A. Stored online (in your account).</strong> These items are stored with Google Firebase so that your account can be restored on a new device:</p>
     <ul>
-      <li>Sign-in data: your email address and a password (handled by Firebase Authentication, we never see your password), or the identifier and optional name/email relay address that Apple gives us when you use Sign in with Apple.</li>
+      <li>Sign-in data: your email address and a password (handled by Firebase Authentication, we never see your password), or the identifier and optional name/email relay address that Apple gives us when you use Sign in with Apple, or the identifier, name and email that Google gives us when you use Sign in with Google (Android).</li>
       <li>Profile data you enter during setup: name, gender, height, weight and the avatar you chose.</li>
       <li>Records that you accepted the Terms, this Privacy Policy and the medical disclaimer, and your choices about notifications and Apple Health, each with a date.</li>
       <li>Technical account data: when the account was created and last signed in.</li>
     </ul>
-    <p><strong>B. Stored only on your iPhone</strong> (we do not receive it):</p>
+    <p><strong>B. Stored only on your phone</strong> (we do not receive it):</p>
     <ul>
       <li>Your medications (names, doses, schedules, start and end dates, icons), dose history and streaks.</li>
       <li>Photos of medication boxes that you choose to attach.</li>
@@ -223,6 +223,7 @@
       <li>App settings, including how reminders repeat, snooze and whether medication names are shown in them, and your achievements.</li>
     </ul>
     <p><strong>C. Apple Health (optional).</strong> If you allow it, Sanor reads data such as steps, heart rate and active energy from Apple Health to show it inside the app and, when you export a PDF report, to put averages for the chosen period into that report. This data is read on your device, used only inside the app and in reports you create, and is not sent to us or to anyone else. You can withdraw the permission at any time in iOS Settings.</p>
+    <p><strong>C2. Health Connect (Android, optional).</strong> On Android, if you allow it, Sanor reads your steps, heart rate and active energy from Health Connect to show them in the app and, when you export a PDF report, to put averages for the chosen period into that report. Sanor only reads this data. It is read on your device, used only inside the app and in reports you create, is never stored on our servers, is not shared with anyone and is not used for advertising. You can withdraw access at any time in Health Connect or in Android settings.</p>
     <p><strong>D. Other permissions you can grant.</strong> Notifications (reminders are created by your device, not sent from our servers); photo library (only the pictures you pick); Calendar (only when you choose to add your schedule to it, which writes events into a separate "Sanor medications" calendar).</p>
     <p>When you export a PDF report for your doctor, the file is created on your device. It can contain your medications, missed doses, symptoms, mood entries, how much medication you have left and, if Apple Health is connected, averages of steps, heart rate and active energy for the period you choose. It goes only where you choose to send it; we do not receive it.</p>
   </section>
@@ -250,6 +251,7 @@
     <h2><span class="icon">🤝</span> 5. Who else handles your data</h2>
     <ul>
       <li><strong>Google Ireland Limited / Google LLC (Firebase Authentication and Cloud Firestore)</strong> stores the account and profile data described in 2A. The profile database is located in Europe. Google may process some data in the United States; this relies on the EU-US Data Privacy Framework and standard contractual clauses.</li>
+      <li><strong>Google LLC (Google Play and Sign in with Google, Android)</strong> provides Google Play, Sign in with Google and Android features such as notifications, exact alarms for reminders and Health Connect. Google handles purchases and downloads under its own privacy policy. Android backups of your device made by Google may contain the app's data; they are controlled by you and Google.</li>
       <li><strong>Apple Distribution International Ltd. / Apple Inc.</strong> provides the App Store, Sign in with Apple, and iOS features such as notifications, Apple Health and iCloud device backups. Apple handles purchases and downloads under its own privacy policy. Backups of your device made by iCloud or a computer may contain the app's data; they are controlled by you and Apple.</li>
       <li><strong>Hosting of this website</strong> (Vercel Inc.) may log technical data such as your IP address when you visit it. We do not use cookies or tracking on the website.</li>
     </ul>
@@ -258,18 +260,18 @@
 
   <section>
     <h2><span class="icon">⏳</span> 6. How long we keep it, and deleting it</h2>
-    <p>We keep your account and profile for as long as your account exists. You can delete everything yourself: <strong>Settings → Delete account</strong> in the app removes your profile from our database and your sign-in, and clears the app data on your device. Deleting the app alone removes the data on the device but not your online account.</p>
+    <p>We keep your account and profile for as long as your account exists. You can delete everything yourself: <strong>Settings → Delete account</strong> in the app removes your profile from our database and your sign-in, and clears the app data on your device. Deleting the app alone removes the data on the device but not your online account. If you cannot open the app, you can ask us to delete your account and data: see <a href="delete-account.html">how to delete your account</a>.</p>
     <p>Technical copies in Google's systems are removed within the periods stated in Google's documentation (generally within about 180 days).</p>
   </section>
 
   <section>
     <h2><span class="icon">🔐</span> 7. Security</h2>
-    <p>Data on your device is protected by iOS (device passcode and file protection). Online data is transmitted over encrypted connections and protected by Google's infrastructure and access rules that let each signed-in user read and write only their own profile. No system is perfectly secure; please also protect your device with a passcode and keep iOS updated.</p>
+    <p>Data on your device is protected by iOS or Android (device passcode and file protection). Online data is transmitted over encrypted connections and protected by Google's infrastructure and access rules that let each signed-in user read and write only their own profile. No system is perfectly secure; please also protect your device with a passcode and keep iOS or Android updated.</p>
   </section>
 
   <section>
     <h2><span class="icon">🔔</span> 8. Notifications</h2>
-    <p>Reminders are local notifications scheduled on your device. We do not send marketing notifications. You can turn notifications off at any time in the app or in iOS Settings, and turn reminders off for a single medication. A reminder can show the medication name; if you prefer, turn on "Hide medication names" in Reminder Settings and the lock screen will only say that it is time to take your medication.</p>
+    <p>Reminders are local notifications scheduled on your device. We do not send marketing notifications. You can turn notifications off at any time in the app or in your phone's settings, and turn reminders off for a single medication. A reminder can show the medication name; if you prefer, turn on "Hide medication names" in Reminder Settings and the lock screen will only say that it is time to take your medication.</p>
   </section>
 
   <section>
