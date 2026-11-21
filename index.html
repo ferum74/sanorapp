@@ -2,1024 +2,333 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Sanor is a free iPhone app that reminds you to take your medication, keeps your schedule and shows possible interactions. Your medication data stays on your phone." />
-  <meta name="theme-color" content="#8DCDFB" />
-  <link rel="icon" href="icon.jpeg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sanor – Medication reminders, supply tracker & health diary for iPhone</title>
+  <meta name="description" content="Sanor is a free iPhone app that reminds you to take your medication, tracks your supply, logs symptoms and mood, and creates PDF reports for your doctor. Your health data stays on your phone." />
+  <meta name="theme-color" content="#e7f0ff" />
+  <link rel="icon" href="/icon.jpeg" />
+  <link rel="apple-touch-icon" href="/icon.jpeg" />
   <link rel="canonical" href="https://www.sanorapp.com/" />
+  <link rel="alternate" hreflang="en" href="https://www.sanorapp.com/" />
+  <link rel="alternate" hreflang="cs" href="https://www.sanorapp.com/cz/" />
+  <link rel="alternate" hreflang="es" href="https://www.sanorapp.com/es/" />
+  <link rel="alternate" hreflang="de" href="https://www.sanorapp.com/de/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.sanorapp.com/" />
   <meta name="apple-itunes-app" content="app-id=6766075127" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Sanor – Your medication companion" />
-  <meta property="og:description" content="Free iPhone app for medication reminders, schedules and interaction checks. Your medication data stays on your phone." />
+  <meta property="og:site_name" content="Sanor" />
+  <meta property="og:title" content="Sanor – Never miss a dose ever again" />
+  <meta property="og:description" content="Sanor is a free iPhone app that reminds you to take your medication, tracks your supply, logs symptoms and mood, and creates PDF reports for your doctor. Your health data stays on your phone." />
   <meta property="og:url" content="https://www.sanorapp.com/" />
   <meta property="og:image" content="https://www.sanorapp.com/icon.jpeg" />
-  <title>Sanor – Your Smart Medication Companion</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --primary: #8DCDFB;
-      --primary-dark: #5bb8f9;
-      --primary-deeper: #2e9de8;
-      --primary-light: #d6effe;
-      --primary-ultra: #eaf6ff;
-      --text: #0f172a;
-      --text-muted: #475569;
-      --text-light: #94a3b8;
-      --white: #ffffff;
-      --border: #e2edf6;
-      --radius: 16px;
-      --radius-lg: 24px;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-      background: var(--white);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    /* ── NAVBAR ─────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(141,205,251,0.2);
-    }
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 32px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-    .nav-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 9px;
-      object-fit: cover;
-    }
-    .nav-icon-fallback {
-      width: 36px;
-      height: 36px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-    }
-    .nav-name {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.3px;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--primary-deeper); }
-    .nav-cta {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white !important;
-      padding: 9px 20px;
-      border-radius: 30px;
-      font-weight: 700 !important;
-      font-size: 0.88rem !important;
-      transition: transform 0.15s, box-shadow 0.2s !important;
-    }
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(141,205,251,0.5);
-      color: white !important;
-    }
-
-    /* ── HERO ───────────────────────────────────── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(160deg, #f0f9ff 0%, var(--white) 50%, #f0f9ff 100%);
-      padding: 100px 32px 60px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -200px; right: -200px;
-      width: 700px; height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(141,205,251,0.22) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -100px; left: -100px;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(141,205,251,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--primary-light);
-      color: var(--primary-deeper);
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 6px 14px;
-      border-radius: 30px;
-      margin-bottom: 20px;
-    }
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 900;
-      color: var(--text);
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      margin-bottom: 20px;
-    }
-    .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary-deeper));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-sub {
-      font-size: 1.12rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 36px;
-      max-width: 460px;
-    }
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white;
-      font-size: 1rem;
-      font-weight: 700;
-      padding: 15px 30px;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 8px 28px rgba(141,205,251,0.45);
-      border: none;
-      cursor: pointer;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 36px rgba(141,205,251,0.55);
-    }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--text);
-      font-size: 1rem;
-      font-weight: 600;
-      padding: 15px 28px;
-      border-radius: 50px;
-      text-decoration: none;
-      border: 2px solid var(--border);
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .btn-secondary:hover {
-      border-color: var(--primary);
-      background: var(--primary-ultra);
-    }
-    .hero-stats {
-      display: flex;
-      gap: 32px;
-      margin-top: 44px;
-    }
-    .stat-item { }
-    .stat-value {
-      font-size: 1.7rem;
-      font-weight: 900;
-      color: var(--text);
-      letter-spacing: -0.5px;
-      line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    /* Hero phone mockup */
-    .hero-visual {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .phone-wrap {
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
-    .phone-glow {
-      position: absolute;
-      inset: -40px;
-      background: radial-gradient(ellipse, rgba(141,205,251,0.35) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-    .phone-frame {
-      width: 260px;
-      background: var(--text);
-      border-radius: 42px;
-      padding: 12px;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,255,255,0.1);
-      position: relative;
-      z-index: 1;
-    }
-    .phone-screen {
-      border-radius: 32px;
-      overflow: hidden;
-      background: linear-gradient(160deg, var(--primary-light), #e0f4ff, var(--primary-ultra));
-      aspect-ratio: 9/19.5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 24px;
-    }
-    .phone-screen img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 28px;
-    }
-    .phone-screen-placeholder {
-      width: 72px;
-      height: 72px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 34px;
-      box-shadow: 0 8px 24px rgba(141,205,251,0.4);
-    }
-    .phone-screen-text {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--text);
-      text-align: center;
-    }
-    .phone-screen-sub {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-align: center;
-    }
-    .pill-chip {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 10px 16px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text);
-      width: 100%;
-    }
-    .pill-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    /* ── SCREENSHOTS ────────────────────────────── */
-    .screenshots {
-      padding: 100px 32px;
-      background: linear-gradient(180deg, var(--white) 0%, var(--primary-ultra) 100%);
-    }
-    .section-center {
-      text-align: center;
-      max-width: 560px;
-      margin: 0 auto 56px;
-    }
-    .tag {
-      display: inline-block;
-      background: var(--primary-light);
-      color: var(--primary-deeper);
-      font-size: 0.73rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      padding: 5px 14px;
-      border-radius: 20px;
-      margin-bottom: 14px;
-    }
-    .section-center h2 {
-      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-      font-weight: 900;
-      color: var(--text);
-      letter-spacing: -0.8px;
-      line-height: 1.15;
-      margin-bottom: 12px;
-    }
-    .section-center p {
-      color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-    .screenshots-grid {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      align-items: end;
-    }
-    .screenshot-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-    .screenshot-item:nth-child(2) .screenshot-frame { transform: translateY(-20px); }
-    .screenshot-frame {
-      background: var(--text);
-      border-radius: 38px;
-      padding: 10px;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
-      transition: transform 0.3s;
-    }
-    .screenshot-frame:hover { transform: translateY(-8px) !important; }
-    .screenshot-screen {
-      border-radius: 30px;
-      overflow: hidden;
-      aspect-ratio: 9/19;
-      background: linear-gradient(160deg, var(--primary-light), #ddf0ff);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .screenshot-screen img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .screenshot-placeholder-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 20px;
-      width: 100%;
-      height: 100%;
-    }
-    .screenshot-icon {
-      font-size: 36px;
-    }
-    .screenshot-label {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-align: center;
-    }
-    .screenshot-caption {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text);
-      text-align: center;
-    }
-
-    /* ── FEATURES ───────────────────────────────── */
-    .features {
-      padding: 100px 32px;
-      background: var(--white);
-    }
-    .features-grid {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-    .feature-card {
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 36px 30px;
-      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-      opacity: 0;
-      transition: opacity 0.25s;
-    }
-    .feature-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(141,205,251,0.2);
-      border-color: var(--primary);
-    }
-    .feature-card:hover::before { opacity: 1; }
-    .feature-icon-wrap {
-      width: 60px;
-      height: 60px;
-      border-radius: 16px;
-      background: var(--primary-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 22px;
-      transition: background 0.25s;
-    }
-    .feature-card:hover .feature-icon-wrap {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    }
-    .feature-icon-img {
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-    }
-    .feature-icon-fallback {
-      font-size: 28px;
-    }
-    .feature-card h3 {
-      font-size: 1.12rem;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 10px;
-      letter-spacing: -0.3px;
-    }
-    .feature-card p {
-      color: var(--text-muted);
-      font-size: 0.93rem;
-      line-height: 1.7;
-    }
-
-    /* ── TESTIMONIALS ───────────────────────────── */
-    .testimonials {
-      padding: 100px 32px;
-      background: linear-gradient(180deg, var(--primary-ultra) 0%, var(--white) 100%);
-    }
-    .testimonials-grid {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .testimonial-card {
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 30px 28px;
-      position: relative;
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
-    .testimonial-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(141,205,251,0.15);
-    }
-    .quote-mark {
-      font-size: 3.5rem;
-      line-height: 1;
-      color: var(--primary);
-      font-family: Georgia, serif;
-      margin-bottom: 6px;
-    }
-    .testimonial-text {
-      font-size: 0.97rem;
-      color: var(--text-muted);
-      line-height: 1.75;
-      margin-bottom: 22px;
-    }
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .author-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: white;
-      flex-shrink: 0;
-    }
-    .author-name {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--text);
-    }
-    .author-meta {
-      font-size: 0.78rem;
-      color: var(--text-light);
-    }
-    .stars {
-      display: flex;
-      gap: 2px;
-      margin-bottom: 14px;
-    }
-    .star { color: #f59e0b; font-size: 15px; }
-
-    /* ── DOWNLOAD ───────────────────────────────── */
-    .download {
-      padding: 100px 32px;
-      background: linear-gradient(135deg, var(--text) 0%, #1e293b 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .download::before {
-      content: '';
-      position: absolute;
-      top: -100px; right: -100px;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(141,205,251,0.15) 0%, transparent 70%);
-    }
-    .download-inner {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-    .download .tag {
-      background: rgba(141,205,251,0.2);
-      color: var(--primary);
-    }
-    .download h2 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 900;
-      color: var(--white);
-      letter-spacing: -0.8px;
-      margin-bottom: 16px;
-      line-height: 1.15;
-    }
-    .download p {
-      color: #94a3b8;
-      font-size: 1.05rem;
-      margin-bottom: 44px;
-      line-height: 1.7;
-    }
-    .store-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .store-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(255,255,255,0.08);
-      border: 1.5px solid rgba(255,255,255,0.15);
-      border-radius: 16px;
-      padding: 14px 24px;
-      text-decoration: none;
-      transition: background 0.2s, border-color 0.2s, transform 0.15s;
-      min-width: 180px;
-    }
-    .store-btn:hover {
-      background: rgba(141,205,251,0.15);
-      border-color: var(--primary);
-      transform: translateY(-2px);
-    }
-    .store-btn-icon { font-size: 28px; flex-shrink: 0; }
-    .store-btn-text { text-align: left; }
-    .store-btn-label {
-      display: block;
-      font-size: 0.68rem;
-      color: #94a3b8;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .store-btn-name {
-      display: block;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: -0.2px;
-    }
-    .download-note {
-      margin-top: 24px;
-      font-size: 0.8rem;
-      color: #64748b;
-    }
-
-    /* ── FOOTER ─────────────────────────────────── */
-    footer {
-      background: #0a0f1a;
-      padding: 48px 32px 32px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 40px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      margin-bottom: 12px;
-    }
-    .footer-brand-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-    }
-    .footer-brand-name {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: white;
-    }
-    .footer-tagline {
-      font-size: 0.85rem;
-      color: #64748b;
-      max-width: 240px;
-    }
-    .footer-col h4 {
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #94a3b8;
-      margin-bottom: 16px;
-    }
-    .footer-col a {
-      display: block;
-      font-size: 0.88rem;
-      color: #64748b;
-      text-decoration: none;
-      margin-bottom: 10px;
-      transition: color 0.2s;
-    }
-    .footer-col a:hover { color: var(--primary); }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding-top: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .footer-copy {
-      font-size: 0.8rem;
-      color: #475569;
-    }
-    .footer-disclaimer {
-      font-size: 0.75rem;
-      color: #334155;
-      text-align: right;
-    }
-
-    /* ── RESPONSIVE ─────────────────────────────── */
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; text-align: center; }
-      .hero-sub { max-width: 100%; }
-      .hero-actions { justify-content: center; }
-      .hero-stats { justify-content: center; }
-      .hero-visual { display: none; }
-      .screenshots-grid,
-      .features-grid,
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .screenshot-item:nth-child(2) .screenshot-frame { transform: none; }
-      .footer-top { flex-direction: column; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .footer-disclaimer { text-align: center; }
-    }
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .hero { padding: 90px 20px 60px; }
-    }
-  </style>
+  <meta name="twitter:card" content="summary" />
+  <link rel="preload" as="image" href="/assets/shots/home.webp" type="image/webp" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Sanor", "description": "Sanor is a free iPhone app that reminds you to take your medication, tracks your supply, logs symptoms and mood, and creates PDF reports for your doctor. Your health data stays on your phone.", "applicationCategory": "HealthApplication", "operatingSystem": "iOS 17+", "inLanguage": ["en", "cs", "sk", "de", "ru", "uk", "es"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "downloadUrl": "https://apps.apple.com/cz/app/sanor/id6766075127", "url": "https://www.sanorapp.com/", "image": "https://www.sanorapp.com/icon.jpeg", "author": {"@type": "Person", "name": "Platon Fedotov"}}</script>
 </head>
 <body>
+<a class="sr-only" href="#main">Skip to content</a>
 
-<!-- NAVBAR -->
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="nav-brand">
-      <img src="icon.jpeg" alt="Sanor" class="nav-icon"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-      <div class="nav-icon-fallback" style="display:none;">💊</div>
-      <span class="nav-name">Sanor</span>
-    </a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="Sanor"><img src="/icon.jpeg" alt="" width="38" height="38" />Sanor</a>
     <ul class="nav-links">
-      <li><a href="#screenshots">Screenshots</a></li>
+      <li><a href="#tour">App tour</a></li>
       <li><a href="#features">Features</a></li>
-      <li><a href="support.html">Support</a></li>
-      <li><a href="#download" class="nav-cta">Download Free</a></li>
+      <li><a href="#rewards">Rewards</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="/support.html">Support</a></li>
     </ul>
+    <nav class="lang" aria-label="Language"><a href="/" hreflang="en" lang="en" aria-current="true">EN</a><a href="/cz/" hreflang="cs" lang="cs">CZ</a><a href="/es/" hreflang="es" lang="es">ES</a><a href="/de/" hreflang="de" lang="de">DE</a></nav>
+    <a class="btn btn-primary btn-sm" href="https://apps.apple.com/cz/app/sanor/id6766075127">Download</a>
   </div>
-</nav>
+</header>
 
-<!-- ── HERO ───────────────────────────────────────── -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span>✦</span> Available on iOS
-      </div>
-      <h1>
-        Never miss<br/>a dose<br/>
-        <span class="highlight">ever again.</span>
-      </h1>
-      <p class="hero-sub">
-        Sanor is your intelligent medication companion — track your pills, set smart reminders, and monitor your wellbeing all in one place.
-      </p>
-      <div class="hero-actions">
-        <a href="https://apps.apple.com/cz/app/sanor/id6766075127" class="btn-primary" rel="noopener">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          Download on App Store
-        </a>
-        <a href="#screenshots" class="btn-secondary">
-          See how it works →
-        </a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <div class="stat-value">Free</div>
-          <div class="stat-label">To download</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">On-device</div>
-          <div class="stat-label">Your medication data</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">iOS 17+</div>
-          <div class="stat-label">For iPhone</div>
-        </div>
-      </div>
-    </div>
+<main id="main">
 
-    <div class="hero-visual">
-      <div class="phone-wrap">
-        <div class="phone-glow"></div>
-        <img src="otter-hero.webp" alt="Sanor App" style="width:480px; position:relative; z-index:1; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.18));" />
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── SCREENSHOTS ──────────────────────────────── -->
-<section class="screenshots" id="screenshots">
-  <div class="section-center">
-    <div class="tag">App Preview</div>
-    <h2>Everything you need,<br/>beautifully designed.</h2>
-    <p>Intuitive screens built for real life — from morning reminders to your health diary.</p>
-  </div>
-
-  <div class="screenshots-grid">
-
-    <div class="screenshot-item">
-      <div class="screenshot-frame">
-        <div class="screenshot-screen">
-          <img src="img/screen-home.jpg" alt="Home screen with today's medication"
-               onerror="this.style.display='none'; this.parentElement.classList.add('show-placeholder');" />
-          <div class="screenshot-placeholder-inner">
-            <div class="screenshot-icon">📋</div>
-            <div class="screenshot-label">Daily Schedule</div>
-          </div>
-        </div>
-      </div>
-      <div class="screenshot-caption">Today at a glance</div>
-    </div>
-
-    <div class="screenshot-item">
-      <div class="screenshot-frame">
-        <div class="screenshot-screen">
-          <img src="img/screen-meds.jpg" alt="List of medications"
-               onerror="this.style.display='none'; this.parentElement.classList.add('show-placeholder');" />
-          <div class="screenshot-placeholder-inner">
-            <div class="screenshot-icon">📊</div>
-            <div class="screenshot-label">Health Insights</div>
-          </div>
-        </div>
-      </div>
-      <div class="screenshot-caption">Your medications</div>
-    </div>
-
-    <div class="screenshot-item">
-      <div class="screenshot-frame">
-        <div class="screenshot-screen">
-          <img src="img/screen-health.jpg" alt="Health diary"
-               onerror="this.style.display='none'; this.parentElement.classList.add('show-placeholder');" />
-          <div class="screenshot-placeholder-inner">
-            <div class="screenshot-icon">🔔</div>
-            <div class="screenshot-label">Smart Reminders</div>
-          </div>
-        </div>
-      </div>
-      <div class="screenshot-caption">Mood, symptoms and cycle</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── FEATURES ─────────────────────────────────── -->
-<section class="features" id="features">
-  <div class="section-center">
-    <div class="tag">Key Features</div>
-    <h2>Built for people who<br/>take health seriously.</h2>
-    <p>Smart tools designed to fit seamlessly into your daily routine — no complexity, just results.</p>
-  </div>
-
-  <div class="features-grid">
-
-    <div class="feature-card">
-      <div class="feature-icon-wrap">
-        <img src="icon.jpeg" alt="" class="feature-icon-img"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-        <span class="feature-icon-fallback" style="display:none;">⏰</span>
-      </div>
-      <h3>Smart Reminders</h3>
-      <p>Reminders timed to your exact schedule, with several doses a day if you need them. They are created on your phone, so they work offline.</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon-wrap">
-        <img src="icon.jpeg" alt="" class="feature-icon-img"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-        <span class="feature-icon-fallback" style="display:none;">📈</span>
-      </div>
-      <h3>Health Tracking</h3>
-      <p>Follow your streaks and how consistently you take your medication. Export a PDF report to show your doctor.</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon-wrap">
-        <img src="icon.jpeg" alt="" class="feature-icon-img"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-        <span class="feature-icon-fallback" style="display:none;">🔒</span>
-      </div>
-      <h3>Privacy First</h3>
-      <p>Your medications, symptoms and mood stay on your iPhone. Only a small profile is stored in your account. No ads, no tracking, and we never sell your data.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── DOWNLOAD ──────────────────────────────────── -->
-<section class="download" id="download">
-  <div class="download-inner">
-    <div class="tag">Download Now</div>
-    <h2>Start your healthier<br/>routine today.</h2>
-    <p>Free to download on the App Store.</p>
-
-    <div class="store-buttons">
-      <a href="https://apps.apple.com/cz/app/sanor/id6766075127" class="store-btn" rel="noopener">
-        <div class="store-btn-icon">🍎</div>
-        <div class="store-btn-text">
-          <span class="store-btn-label">Download on the</span>
-          <span class="store-btn-name">App Store</span>
-        </div>
-      </a>
-
-    </div>
-
-    <p class="download-note">Requires iOS 17 or later · Free · Sign in with Apple or email</p>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
       <div>
-        <a href="#" class="footer-brand">
-          <div class="footer-brand-icon">💊</div>
-          <span class="footer-brand-name">Sanor</span>
-        </a>
-        <p class="footer-tagline">Your smart medication companion for a healthier, more consistent life.</p>
+        <a class="pill" href="#cycle"><i></i><span>New in 1.7 · Cycle tracking & smarter interaction checks</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        <h1>Never miss a dose <em>ever again.</em></h1>
+        <p class="hero-sub">Sanor is a friendly medication companion: reminders you can answer right from the notification, a supply tracker, a symptom and mood diary, and reports ready for your doctor. Your health data stays on your phone.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://apps.apple.com/cz/app/sanor/id6766075127"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>Download on the App Store</a>
+          <a class="btn btn-ghost" href="#tour">See how it works</a>
+        </div>
+        <ul class="chips"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Free to download</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Data stays on your iPhone</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No ads, no tracking</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>iOS 17 or later</li></ul>
       </div>
-      <div class="footer-col">
-        <h4>Product</h4>
-        <a href="#features">Features</a>
-        <a href="#screenshots">Screenshots</a>
-        <a href="#download">Download</a>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Use</a>
-        <a href="support.html#faq">FAQ</a>
-      </div>
-      <div class="footer-col">
-        <h4>Support</h4>
-        <a href="support.html">Help Center</a>
-        <a href="support.html#contact">Contact Us</a>
-        <a href="support.html#how-to">How to Use</a>
+      <div class="hero-visual">
+        <div class="phone"><img src="/assets/shots/home.webp" alt="Sanor home screen with today’s medicines, a 21-day streak and the otter mascot" width="620" height="1348" fetchpriority="high" decoding="async"></div>
+        <img class="hero-otter" src="/assets/otters/otter_hello.webp" alt="Sanor otter mascot" width="400" height="400" />
+        <div class="float float-a"><div class="dot dot-orange"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.4 1-3 0 1.3 1 2.5 2.5 2.5z"/></svg></div><div><b>21-day streak</b><span>Keep it going!</span></div></div>
+        <div class="float float-b"><div class="dot dot-green"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div><div><b>Omega-3 · 8:00 PM</b><span>Marked as taken</span></div></div>
+        <div class="float float-c"><div class="dot dot-blue"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></svg></div><div><b>About 5 days left</b><span>Time to buy a new pack</span></div></div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">© 2026 Platon Fedotov · <a href="mailto:sanor.help@gmail.com" style="color:inherit">sanor.help@gmail.com</a> · Czech medicine names: SÚKL open data · Spanish: AEMPS CIMA</p>
-      <p class="footer-disclaimer">Not a medical device. Does not replace professional medical advice.</p>
+  </section>
+
+  <div class="strip wrap"><div class="strip-card reveal"><div class="stat"><b>Free</b><span>to download</span></div><div class="stat"><b>7</b><span>app languages</span></div><div class="stat"><b>24</b><span>otter awards</span></div><div class="stat"><b>0</b><span>ads or trackers</span></div></div></div>
+
+  <!-- TOUR -->
+  <section class="section" id="tour">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">Take a tour</span>
+        <h2>Everything you need, calmly in one place.</h2>
+        <p>From the first reminder to the doctor's visit, Sanor keeps your routine simple.</p>
+      </div>
+      
+      <div class="row reveal">
+        <div class="row-media"><div class="phone"><img src="/assets/shots/reminders.webp" alt="Reminder settings: remind me again, snooze and hide medicine names" width="620" height="1348" loading="lazy" decoding="async"></div></div>
+        <div class="row-text">
+          <div class="tagico bg-amber"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+          <h3>Reminders you can answer in one tap</h3>
+          <p>Mark a dose as Taken, Snooze it or Skip it right from the notification. Forgot? Sanor nudges you again, and you choose how often.</p>
+          <ul class="ticks"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Taken, Snooze and Skip in the notification</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Repeat reminders until you mark the dose</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Hide medicine names on the lock screen</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Turn reminders off for a single medicine</span></li></ul>
+        </div>
+      </div>
+      
+      <div class="row flip reveal">
+        <div class="row-media"><div class="phone"><img src="/assets/shots/supply.webp" alt="Medication supply screen showing about 5 days left" width="620" height="1348" loading="lazy" decoding="async"></div></div>
+        <div class="row-text">
+          <div class="tagico bg-blue"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></svg></div>
+          <h3>Know when to buy the next pack</h3>
+          <p>Enter how many tablets are in the box. Sanor shows how many days they will last, how many you need to finish a course, and warns you before they run out.</p>
+          <ul class="ticks"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Days left and the date your supply lasts until</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A heads-up before the pack is empty</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>One tap on “I bought a pack” to update it</span></li></ul>
+        </div>
+      </div>
+      
+      <div class="row reveal">
+        <div class="row-media"><div class="phone"><img src="/assets/shots/timeline.webp" alt="Timeline of doses, symptoms and mood for the week" width="620" height="1348" loading="lazy" decoding="async"></div></div>
+        <div class="row-text">
+          <div class="tagico bg-coral"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <h3>See how doses, symptoms and mood fit together</h3>
+          <p>Doses, symptoms and mood side by side, day by day, for a week, a month or three months, so patterns become easy to notice.</p>
+          <ul class="ticks"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Week, month and 3-month views</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Log symptoms with intensity and notes</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Optional cycle tracking with predictions</span></li></ul>
+        </div>
+      </div>
+      
+      <div class="row flip reveal">
+        <div class="row-media"><div class="phone"><img src="/assets/shots/reports.webp" alt="Reports screen with PDF export for last week, last month, all time or custom range" width="620" height="1348" loading="lazy" decoding="async"></div></div>
+        <div class="row-text">
+          <div class="tagico bg-purple"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
+          <h3>Bring a report to your next appointment</h3>
+          <p>Export a PDF for the last week, last month, all time or any custom range: missed doses, symptoms, mood and averages from Apple Health.</p>
+          <ul class="ticks"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Share the PDF with your doctor in a tap</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Add your daily doses to iPhone Calendar</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Streaks and adherence at a glance</span></li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CYCLE (new in 1.7) -->
+  <section class="section section-warm" id="cycle">
+    <div class="wrap">
+      <div class="row flip reveal">
+        <div class="row-media"><div class="cy-visual">
+          <div class="cy-card" aria-hidden="true">
+            <div class="cy-head"><span class="tagico bg-coral"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.7 5.6 9.1a9 9 0 1 0 12.8 0z"/></svg></span><b>Cycle</b></div>
+            <div class="cy-ring"><svg viewBox="0 0 240 240" aria-hidden="true"><circle cx="120" cy="120" r="92" fill="none" stroke="#e3ebff" stroke-width="20"/><circle cx="120" cy="120" r="92" fill="none" stroke="#ff7b5c" stroke-width="20" stroke-dasharray="103.2 578.1" stroke-dashoffset="0.0" transform="rotate(-90 120 120)"/><circle cx="120" cy="120" r="92" fill="none" stroke="#2fc88c" stroke-width="20" stroke-dasharray="123.9 578.1" stroke-dashoffset="-185.8" transform="rotate(-90 120 120)"/><circle cx="130.3" cy="211.4" r="9" fill="#8b6cf6" stroke="#fff" stroke-width="3"/><circle cx="168.9" cy="197.9" r="11" fill="#fff" stroke="#2f5bdb" stroke-width="4"/></svg><div class="cy-center"><b>Day 12</b><span>Fertile window</span></div></div>
+            <p class="cy-line">Ovulation in 2 days</p>
+            <div class="cy-next"><span>Next period</span><b>in 16 days</b></div>
+            <ul class="cy-legend"><li><i class="lp"></i>Period</li><li><i class="lf"></i>Forecast</li><li><i class="lg"></i>Fertile</li><li><i class="lo"></i>Ovulation</li></ul>
+            <div class="cy-actions"><span class="cy-chip">Mood</span><span class="cy-chip">Pain</span><span class="cy-btn">Log your day</span></div>
+          </div>
+          <img class="cy-otter" src="/assets/otters/otter_mood_diary.webp" alt="" width="400" height="400" loading="lazy" decoding="async">
+        </div></div>
+        <div class="row-text">
+          <span class="eyebrow eyebrow-coral">New in 1.7</span>
+          <h3>Cycle tracking, built around you.</h3>
+          <p>A calm, private way to follow your cycle right next to your medication. Available to everyone: just turn it on in Settings.</p>
+          <ul class="ticks"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A ring with your cycle day and what comes next</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A calendar with period, fertile window and ovulation forecasts</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A quick log for flow, symptoms, mood and pain</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Insights on how your cycle varies and which symptoms repeat</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Forecasts that learn from what you log</span></li></ul>
+          <p class="cy-note">Forecasts are estimates based on what you log. They are not a method of contraception and not a medical diagnosis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section section-tint" id="features">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">And more</span>
+        <h2>Small details, big peace of mind.</h2>
+        <p>Sanor is built around the little things that make a daily routine easier to keep.</p>
+      </div>
+      <div class="bento">
+        
+        <div class="card card-new span-4 reveal"><span class="badge-new">New in 1.7</span>
+          <div class="tagico bg-blue"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
+          <h3>Smarter interaction checks</h3>
+          <p>Sanor now spots two medicines of the same kind (for example two statins or two painkillers from one group), risky combinations by mechanism, and medicines that should be taken at different times. If a medicine could not be checked, the app says so instead of staying silent.</p>
+        </div>
+        
+        <div class="card span-2 reveal">
+          <div class="tagico bg-coral"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21.2l7.8-7.7 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+          <h3>Food and alcohol notes</h3>
+          <p>Short notes on grapefruit, dairy, vitamin K and alcohol right in each medicine’s card.</p>
+        </div>
+        
+        <div class="card span-2 reveal">
+          <div class="tagico bg-blue"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+          <h3>A medicine database that speaks your language</h3>
+          <p>Find your medicine by the name on the box: thousands of local brand names from Czech, Slovak, Ukrainian, Russian and Spanish registers.</p>
+        </div>
+        
+        <div class="card span-2 reveal">
+          <div class="tagico bg-green"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <h3>Apple Health, if you want it</h3>
+          <p>With your permission, Sanor shows steps, heart rate and activity next to your medication log. You stay in control in iOS settings.</p>
+        </div>
+        
+        <div class="card span-2 reveal">
+          <div class="tagico bg-purple"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-15-6.7L3 13"/></svg></div>
+          <h3>Fix a mistaken tap</h3>
+          <p>Marked the wrong dose? Undo it right away, or flip a dose between Taken and Missed with one tap.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REWARDS -->
+  <section class="section" id="rewards">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">Rewards</span>
+        <h2>Meet the otters that cheer you on.</h2>
+        <p>Take your doses, keep a rhythm and look after yourself to unlock 24 otter awards for milestones, daily habits and caring for your health.</p>
+      </div>
+      <div class="rewards-grid"><div class="card award reveal"><img src="/assets/otters/otter_hello.webp" alt="" width="400" height="400" loading="lazy" decoding="async"><h3>Hello, Sanor</h3></div><div class="card award reveal"><img src="/assets/otters/otter_fifty_doses.webp" alt="" width="400" height="400" loading="lazy" decoding="async"><h3>Getting the Hang of It</h3></div><div class="card award reveal"><img src="/assets/otters/otter_seven_day.webp" alt="" width="400" height="400" loading="lazy" decoding="async"><h3>Week Strong</h3></div><div class="card award reveal"><img src="/assets/otters/otter_early_bird.webp" alt="" width="400" height="400" loading="lazy" decoding="async"><h3>Early Bird</h3></div><div class="card award reveal"><img src="/assets/otters/otter_thirty_day.webp" alt="" width="400" height="400" loading="lazy" decoding="async"><h3>Monthly Champion</h3></div><div class="card award reveal"><img src="/assets/otters/otter_night_owl.webp" alt="" width="400" height="400" loading="lazy" decoding="async"><h3>Night Owl</h3></div><div class="card award reveal"><img src="/assets/otters/otter_hundred_days.webp" alt="" width="400" height="400" loading="lazy" decoding="async"><h3>Hundred Days</h3></div><div class="card award reveal"><img src="/assets/otters/otter_year_of_care.webp" alt="" width="400" height="400" loading="lazy" decoding="async"><h3>Year of Care</h3></div></div>
+    </div>
+  </section>
+
+  <!-- WHAT'S NEW -->
+  <section class="section section-tint" id="news">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">What’s new</span>
+        <h2>Sanor keeps getting better.</h2>
+        <p>Regular updates, shaped by what people actually need.</p>
+      </div>
+      <div class="news">
+        <div class="news-main reveal">
+          <span class="ver"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.4 1-3 0 1.3 1 2.5 2.5 2.5z"/></svg>Version 1.7</span>
+          <h3>Cycle tracking and smarter interaction checks</h3>
+          <ul class="ticks"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>New cycle tracking: a ring with your cycle day and what is next, a calendar with forecasts, a quick log for flow, symptoms, mood and pain, and insights on how your cycle varies. Forecasts learn from what you log. Available to everyone, turn it on in Settings.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Spots two medicines of the same kind, risky combinations by mechanism, and medicines that should be taken at different times.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Short notes on alcohol and food (grapefruit, dairy, vitamin K) in a medicine’s card.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Honest status: if a medicine could not be checked, the app says so instead of showing nothing.</span></li></ul>
+        </div>
+        <div class="old-list"><div class="old reveal"><b>1.6</b><p>Over 110 new medicines and thousands of local brand names from Czech, Slovak, Ukrainian, Russian and Spanish registers. New warnings about risky combinations.</p></div><div class="old reveal"><b>1.5</b><p>Correct a mistaken mark with Undo, or flip Taken and Missed with a tap.</p></div><div class="old reveal"><b>1.4</b><p>Spanish is here: the app and the medicine database now speak Spanish, including Spanish brand names.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORMS -->
+  <section class="section" id="download-info">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">Where to get it</span>
+        <h2>On your phone, in your language.</h2>
+        <p>Sanor speaks seven languages, so your routine feels natural wherever you are.</p>
+      </div>
+      <div class="plat">
+        <div class="card reveal">
+          <span class="status live">Available now</span>
+          <h3>iPhone</h3>
+          <p>Free on the App Store. Requires iOS 17 or later. Sign in with Apple or email.</p>
+          <a class="btn btn-primary btn-sm" href="https://apps.apple.com/cz/app/sanor/id6766075127"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>Download on the App Store</a>
+        </div>
+        <div class="card reveal">
+          <span class="status soon">In development</span>
+          <h3>Android</h3>
+          <p>An Android version is on the way. This page will link to Google Play as soon as it is ready.</p>
+          <span class="btn btn-ghost btn-sm" aria-disabled="true" style="pointer-events:none;opacity:.7">Coming soon</span>
+        </div>
+      </div>
+      <ul class="langs reveal"><li>English</li><li>Čeština</li><li>Slovenčina</li><li>Deutsch</li><li>Русский</li><li>Українська</li><li>Español</li></ul>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="privacy-band reveal">
+        <h2>Your health data stays yours.</h2>
+        <p>Sanor was designed to collect as little as possible. No ads, no analytics, no data sales.</p>
+        <div class="p3"><div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg><b>On your iPhone</b><span>Medications, doses, symptoms, mood and cycle entries are stored on your device.</span></div><div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><b>A small profile online</b><span>Only your sign-in and a small profile are stored, so you can sign back in on a new phone.</span></div><div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><b>You are in control</b><span>Export or share data only if you choose to, and delete your account any time in the app.</span></div></div>
+        <a class="more" href="/privacy.html">Read the Privacy Policy →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-tint" id="faq">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>Quick answers.</h2>
+      </div>
+      <div class="faq reveal"><div class="faq-item open"><button class="faq-q" type="button">Is Sanor really free?<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>Yes. Sanor is free to download on the App Store. It requires iOS 17 or later, and you sign in with Apple or email.</p></div></div><div class="faq-item"><button class="faq-q" type="button">Is Sanor a medical app?<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>No. Sanor does not replace a doctor, a pharmacist or medical advice. It helps you organize your schedule and stay consistent. If Sanor shows a possible interaction, talk to your doctor or pharmacist. Not seeing a warning does not mean a combination is safe.</p></div></div><div class="faq-item"><button class="faq-q" type="button">Where is my health data stored?<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>Your medications, doses, symptoms, mood notes and cycle entries are stored on your iPhone. Your account and a small profile are stored with Google Firebase so you can sign back in on a new phone. We do not sell data, show ads or track you.</p></div></div><div class="faq-item"><button class="faq-q" type="button">Is cycle tracking available to everyone?<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>Yes. Cycle tracking is available to everyone: turn it on in Settings and it appears in the Health tab. Your cycle entries are stored on your iPhone, like the rest of your health records.</p><p>Forecasts are estimates based on what you log. They are not a method of contraception and not a medical diagnosis.</p></div></div><div class="faq-item"><button class="faq-q" type="button">Do reminders work offline?<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>Yes. Reminders are scheduled on your phone, so they work without an internet connection.</p></div></div><div class="faq-item"><button class="faq-q" type="button">Is there an Android version?<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>It is in development. Once it is ready, this page will link to Google Play.</p></div></div></div>
+      <p class="faq-more"><a href="/support.html#faq">More answers in the Help Center →</a></p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="download" style="padding-top:100px">
+    <div class="wrap">
+      <div class="cta-card reveal">
+        <div>
+          <h2>Start your healthier routine today.</h2>
+          <p>Free to download. Requires iOS 17 or later. Sign in with Apple or email.</p>
+          <a class="btn btn-light" href="https://apps.apple.com/cz/app/sanor/id6766075127"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>Download on the App Store</a>
+        </div>
+        <img src="/assets/otters/otter_weekend_hero.webp" alt="Sanor otter mascot" width="400" height="400" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/"><img src="/icon.jpeg" alt="" width="38" height="38" />Sanor</a>
+        <p>A smart medication companion for a healthier, more consistent life.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#tour">App tour</a></li>
+          <li><a href="#download">Download</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/terms.html">Terms of Use</a></li>
+          <li><a href="/delete-account.html">Delete account</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="/support.html">Help Center</a></li>
+          <li><a href="/support.html#faq">FAQ</a></li>
+          <li><a href="/support.html#how-to">How to use</a></li>
+          <li><a href="mailto:sanor.help@gmail.com">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 Platon Fedotov · <a href="mailto:sanor.help@gmail.com">sanor.help@gmail.com</a></p>
+      <p>Czech medicine names: SÚKL open data · Spanish: AEMPS CIMA.</p>
+      <p>Sanor is not a medical device and does not replace professional medical advice.</p>
     </div>
   </div>
 </footer>
 
-<script>
-  // Smooth active state for nav on scroll
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(sec => {
-      if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
-    });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--primary-deeper)' : '';
-    });
-  });
-
-  // Handle broken screenshot images — show placeholder content
-  document.querySelectorAll('.screenshot-screen').forEach(screen => {
-    const img = screen.querySelector('img');
-    const placeholder = screen.querySelector('.screenshot-placeholder-inner');
-    if (img && placeholder) {
-      img.addEventListener('error', () => {
-        img.style.display = 'none';
-        placeholder.style.display = 'flex';
-      });
-      img.addEventListener('load', () => {
-        placeholder.style.display = 'none';
-      });
-    }
-  });
-</script>
-
+<script src="/assets/site.js" defer></script>
 </body>
 </html>

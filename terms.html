@@ -2,196 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms of Use – Sanor</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --primary: #8DCDFB;
-      --primary-dark: #5bb8f9;
-      --primary-light: #d6effe;
-      --text: #1a1a2e;
-      --text-muted: #5a6a7a;
-      --border: #e2edf6;
-      --bg: #f7fbff;
-      --white: #ffffff;
-      --radius: 14px;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 0 24px;
-    }
-    .header-inner {
-      max-width: 780px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      height: 64px;
-    }
-    .header-logo {
-      width: 38px; height: 38px;
-      border-radius: 9px;
-      object-fit: cover;
-    }
-    .header-logo-fallback {
-      width: 38px; height: 38px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
-    }
-    .header-title { font-size: 1.1rem; font-weight: 700; color: var(--text); }
-    .header-back {
-      margin-left: auto;
-      font-size: 0.85rem;
-      color: var(--primary-dark);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .header-back:hover { text-decoration: underline; }
-
-    .hero {
-      background: linear-gradient(135deg, var(--primary-light), #eaf6ff);
-      padding: 52px 24px 44px;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-    }
-    .hero h1 {
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.5px;
-      margin-bottom: 10px;
-    }
-    .hero-meta {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-
-    main {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
-
-    .intro-card {
-      background: var(--white);
-      border: 1.5px solid var(--primary);
-      border-radius: var(--radius);
-      padding: 22px 26px;
-      margin-bottom: 40px;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-    .intro-card strong { color: var(--text); }
-
-    section {
-      margin-bottom: 40px;
-    }
-    section h2 {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 14px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid var(--primary-light);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    section h2 .icon {
-      width: 30px; height: 30px;
-      border-radius: 8px;
-      background: var(--primary-light);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px;
-      flex-shrink: 0;
-    }
-    section p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 12px;
-    }
-    section p:last-child { margin-bottom: 0; }
-    section ul {
-      margin: 10px 0 12px 20px;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-    section ul li { margin-bottom: 7px; }
-
-    .highlight-box {
-      background: var(--primary-light);
-      border-radius: 10px;
-      padding: 16px 20px;
-      font-size: 0.92rem;
-      color: var(--text);
-      margin: 14px 0;
-    }
-
-    .contact-block {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      margin-top: 14px;
-    }
-    .contact-block a {
-      color: var(--primary-dark);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .contact-block a:hover { text-decoration: underline; }
-
-    footer {
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      padding: 28px 24px;
-      text-align: center;
-    }
-    .footer-inner { max-width: 780px; margin: 0 auto; }
-    .footer-links {
-      display: flex; justify-content: center; gap: 24px;
-      margin-bottom: 12px; flex-wrap: wrap;
-    }
-    .footer-links a {
-      color: var(--text-muted); font-size: 0.85rem;
-      text-decoration: none; transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--primary-dark); }
-    .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
-  </style>
-<link rel="icon" href="icon.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sanor – Terms of Use</title>
+  <meta name="description" content="The terms for using the Sanor app." />
+  <meta name="theme-color" content="#e7f0ff" />
+  <link rel="icon" href="/icon.jpeg" />
+  <link rel="apple-touch-icon" href="/icon.jpeg" />
+  <link rel="canonical" href="https://www.sanorapp.com/terms.html" />
+  <link rel="stylesheet" href="/assets/site.css" />
 </head>
 <body>
-
-<header>
-  <div class="header-inner">
-    <img src="icon.jpeg" alt="Sanor" class="header-logo"
-         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-    <div class="header-logo-fallback" style="display:none;">💊</div>
-    <span class="header-title">Sanor</span>
-    <a href="index.html" class="header-back">← Back to Home</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="Sanor"><img src="/icon.jpeg" alt="" width="38" height="38" />Sanor</a>
+    <ul class="nav-links">
+      <li><a href="/#tour">App tour</a></li>
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#rewards">Rewards</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/support.html">Support</a></li>
+    </ul>
+    <a class="btn btn-primary btn-sm" href="https://apps.apple.com/cz/app/sanor/id6766075127">Download</a>
   </div>
 </header>
 
-<div class="hero">
-  <h1>Terms of Use</h1>
-  <p class="hero-meta">Last updated: October 30, 2026 &nbsp;·&nbsp; Effective: October 30, 2026</p>
+<div class="page-hero">
+  <div class="wrap">
+    <h1>Terms of Use</h1>
+    <p class="meta">Last updated: October 30, 2026 &nbsp;·&nbsp; Effective: October 30, 2026</p>
+    
+  </div>
 </div>
 
-<main>
+<main class="doc" id="main">
 <div class="intro-card">
     <strong>The short version.</strong> Sanor helps you remember and keep track of your medications. It is a reminder and tracking tool, <strong>not a medical service</strong>: it does not diagnose, treat or give medical advice. Always follow your doctor's and pharmacist's instructions. Below are the full terms for using the app.
   </div>
@@ -315,21 +158,49 @@
       <p>Website: <a href="https://www.sanorapp.com/support.html">www.sanorapp.com/support.html</a></p>
     </div>
   </section>
-
-
 </main>
 
-<footer>
-  <div class="footer-inner">
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="support.html">Support</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Use</a>
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/"><img src="/icon.jpeg" alt="" width="38" height="38" />Sanor</a>
+        <p>A smart medication companion for a healthier, more consistent life.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#tour">App tour</a></li>
+          <li><a href="/#download">Download</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/terms.html">Terms of Use</a></li>
+          <li><a href="/delete-account.html">Delete account</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="/support.html">Help Center</a></li>
+          <li><a href="/support.html#faq">FAQ</a></li>
+          <li><a href="/support.html#how-to">How to use</a></li>
+          <li><a href="mailto:sanor.help@gmail.com">Contact us</a></li>
+        </ul>
+      </div>
     </div>
-    <p class="footer-copy">© 2026 Platon Fedotov. Sanor is a trade name of the app.</p>
+    <div class="foot-bottom">
+      <p>© 2026 Platon Fedotov · <a href="mailto:sanor.help@gmail.com">sanor.help@gmail.com</a></p>
+      <p>Czech medicine names: SÚKL open data · Spanish: AEMPS CIMA.</p>
+      <p>Sanor is not a medical device and does not replace professional medical advice.</p>
+    </div>
   </div>
 </footer>
 
+<script src="/assets/site.js" defer></script>
 </body>
 </html>
